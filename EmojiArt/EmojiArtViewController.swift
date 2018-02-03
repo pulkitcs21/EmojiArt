@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EmojiArtViewController.swift
 //  EmojiArt
 //
 //  Created by Pulkit Agarwal on 2/3/18.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class EmojiArtViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +23,3 @@ class ViewController: UIViewController {
 
 
 }
-
