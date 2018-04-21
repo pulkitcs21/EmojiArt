@@ -8,18 +8,30 @@
 
 import UIKit
 
-class EmojiArtViewController: UIViewController {
+class EmojiArtViewController: UIViewController, UIDropInteractionDelegate{
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+   
+    @IBOutlet weak var dropZone: UIView! {
+        didSet{
+            dropZone.addInteraction(UIDropInteraction(delegate: self))
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+        return session.canLoadObjects(ofClass: NSURL.self) && session.canLoadObjects(ofClass: UIImage.self)
     }
-
-
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        return UIDropProposal(operation: .copy)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        session.loadObjects(ofClass: NSURL.self) { nsurl in
+            if let 
+            }
+        session.loadObjects(ofClass: UIImage.self { images in
+        }
+    }
+    @IBOutlet weak var emojiArtView: EmojiArtView!
+    
 }
