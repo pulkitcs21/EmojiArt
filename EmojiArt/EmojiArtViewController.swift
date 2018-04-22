@@ -27,7 +27,7 @@ class EmojiArtViewController: UIViewController, UIDropInteractionDelegate{
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.loadObjects(ofClass: NSURL.self) { nsurl in
-            if let 
+            if let
             }
         session.loadObjects(ofClass: UIImage.self { images in
         }
