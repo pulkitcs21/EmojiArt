@@ -14,6 +14,10 @@ class EmojiArtDocumentTableViewController: UITableViewController {
     
     var emojiArtDocument = ["One", "Two", "Three"]
 
+    @IBAction func newArtDocument(_ sender: UIBarButtonItem) {
+        emojiArtDocument += ["untitled".madeUnique(withRespectTo: emojiArtDocument)]
+        tableView.reloadData()
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -27,32 +31,36 @@ class EmojiArtDocumentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
-
         // Configure the cell...
         cell.textLabel?.text = emojiArtDocument[indexPath.row]
         return cell
     }
 
-
-    /*
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if splitViewController?.preferredDisplayMode != .primaryOverlay{
+            splitViewController?.preferredDisplayMode = .primaryOverlay
+        }
+    }
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
+
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            emojiArtDocument.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
